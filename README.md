@@ -34,8 +34,7 @@ Mail remainder system to the users about events,registrations,security alerts.(*
 ## Installation and Setup
  1. ### Clone the repository:
 ``` bash 
-[git clone  https://github.com/Rajeswari-Machina/Krypton-Event-Management-System/
-cd event-management-syste](https://github.com/SREERAM9652/SWCE-EVENTS.git)
+[git clone  https://github.com/SREERAM9652/SWCE-EVENTS.git-](systehttps://github.com/SREERAM9652/SWCE-EVENTS.git)
 ```
  2. ### Install dependencies:
 ```python
