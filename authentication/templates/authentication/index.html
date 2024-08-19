@@ -1,0 +1,399 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Organisers </title>
+    <style>
+      a{
+        text-decoration:none;
+      }
+    </style>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="" crossorigin="anonymous">
+
+    <!--css file-->
+    <link rel="stylesheet" href={% static "index.css" %} />
+
+     <!--font awesome-->
+     <link
+     rel="stylesheet"
+     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+   />
+
+
+  </head>
+  <body>
+    
+    <!-- header section starts  -->
+    <header class="header">
+      <a href="#" class="logo"> {% if user.get_username %}
+        {{ user.get_username }}
+        {% else %}
+        <span>S</span>WCE 
+        {% endif %}
+       </a>
+<!---->
+      <nav class="navbar">
+        {% if not user.is_superuser %}
+        <a href="#home">Home</a>
+        <a href="#about">about</a>
+        <a href="#gallery">Past Events</a>
+        <a href="#contact">Contact</a>
+        <a href="{% url 'myevents' %}">My events</a>
+        <a href="{% url 'event_register' %}">Organize events</a>
+        {% endif %}
+        {% if role == 'organizer' %}
+        <a href={% url "organizerevents" %}>Events Analysis</a>
+        {% endif %}
+        {% if user.is_superuser %}
+        <a href="admin">Admin</a>
+        <a href={% url "manage_events" %}>Manage Events</a>
+        {% endif %}
+        {% if user.is_authenticated %}
+        <a href="logout/">logout</a>
+        {% else %}
+        <a href="login/">login</a>
+        {% endif %}
+      </nav>
+
+      <div id="menu-bars" class="fas fa-bars"></div>
+    </header>
+    <br>  
+
+    
+<!--home section-->
+  <div class="carousel">
+
+    <div class="list">
+      {% for image in images %}
+        <div class="item" style="background-image: url({{image.photo.url}});">
+            <div class="content">
+              
+                <div class="name" style="color:#c4180b;font-size: 70px">SWCE EVENTS</div>
+                
+                <div class="btn1">
+                 
+                  <a href="#about"><button>Know More</button></a>
+              </div>
+                
+            </div>
+        </div>
+          {% endfor %}
+    </div>
+    <!--next prev button-->
+    <div class="arrows">
+        <button class="prev"><</button>
+        <button class="next">></button>
+    </div>
+
+
+    <!-- time running -->
+    <div class="timeRunning"></div>
+
+</div>
+
+
+  
+ 
+  
+    
+
+    
+      
+     
+    <!-- about section starts  -->
+    <section class="about" id="about">
+      <h1 class="heading"><span>about</span> us</h1>
+
+      <div class="row">
+        <div class="image">
+          <img src="media/images/rguktrkv.jpg" alt="campus" />
+          <img src="media/images/rgukt2.jpg" alt="logo" />
+        </div>
+
+        <div class="content">
+          <h3>Welcome To Study World College of Engineering,</h3>
+          <p>
+            Study World College of Engineering, started in 2009, is one of the renowned private institutions of Coimbatore, India. The college offers a range of courses approved by AICTE and affiliated to Anna University. Study World College of Engineering is a part of Study World Education Holding Group.
+          </p>
+          
+          <a href="#contact" class="btn">reach us</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- service section starts  -->
+    <section class="service" id="service">
+      <h1 class="heading">UpComing <span>Events</span></h1>
+
+      <div class="box-container">
+        {% for event in events %}
+        <div class="box">
+          <i class="fas fa-envelope"></i>
+          <a href={% url "detailed_event" event.id %}>
+          <h3>{{event.name}}</h3>
+          </a>
+          <p style="height:100px; overflow:hidden;text-overflow:ellipsis">
+            {{event.description}}
+          </p>
+          <form action={% if event in registeredEvents%} "unregister/" {% else %} "register/" {% endif %} method="POST">
+            {% csrf_token %}
+            <input type="hidden" id="event_name" name="event_name" value="{{event.name}}" />
+            {% if event in registeredEvents%}
+            <input type="submit" value="unregister" class="btn"/>
+            {% else %}
+            <input type="submit" value="register" class="btn"/>
+            {% endif %}
+          </form>
+          <a href={% url "recrute" event.id %} class="btn-vol">Hiring Volunters</a>
+        </div>
+        {% endfor %}
+      </div>
+        
+    </section>
+    <!-- gallery section starts  -->
+    <section class="gallery" id="gallery">
+      <h1 class="heading">Past &nbsp;<span>Events</span></h1>
+      
+      {% for past_event in past_events %}
+      <div class="box-container">
+        <div class="box">
+          <img src="{{ past_event.images.all.0.photo.url }}" alt="{{past_event.name}}" />
+          
+          <h3 class="title">{{past_event.name}}</h3>
+          <div class="icons">
+            <a  href={% url "detailed_event" past_event.id %} class="fas fa-eye"></a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </section> 
+  
+
+<!--
+    <section class="reivew" id="review">
+      <h1 class="heading"><span>Testimonials</span></h1>
+
+      <div class="review-slider swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide box">
+            <i class="fas fa-quote-right"></i>
+            <div class="user">
+              <img src="media/images/icons8-user-48.png" alt="" />
+              <div class="user-info">
+                <h3>nayana</h3>
+                <span>happy customer</span>
+              </div>
+            </div>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
+              dolor dicta cum. Eos beatae eligendi, magni numquam nemo sed ut
+              corrupti, ipsam iure nisi unde et assumenda perspiciatis
+              voluptatibus nihil.
+            </p>
+          </div>
+
+          <div class="swiper-slide box">
+            <i class="fas fa-quote-right"></i>
+            <div class="user">
+              <img src="media/images/icons8-user-48.png" alt="" />
+              <div class="user-info">
+                <h3>lisa</h3>
+                <span>happy customer</span>
+              </div>
+            </div>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
+              dolor dicta cum. Eos beatae eligendi, magni numquam nemo sed ut
+              corrupti, ipsam iure nisi unde et assumenda perspiciatis
+              voluptatibus nihil.
+            </p>
+          </div>
+
+          <div class="swiper-slide box">
+            <i class="fas fa-quote-right"></i>
+            <div class="user">
+              <img src="media/images/icons8-user-48.png" alt="" />
+              <div class="user-info">
+                <h3>mary</h3>
+                <span>happy customer</span>
+              </div>
+            </div>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
+              dolor dicta cum. Eos beatae eligendi, magni numquam nemo sed ut
+              corrupti, ipsam iure nisi unde et assumenda perspiciatis
+              voluptatibus nihil.
+            </p>
+          </div>
+
+          <div class="swiper-slide box">
+            <i class="fas fa-quote-right"></i>
+            <div class="user">
+              <img src="media/images/icons8-user-48.png" alt="" />
+              <div class="user-info">
+                <h3>rose</h3>
+                <span>happy customer</span>
+              </div>
+            </div>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
+              dolor dicta cum. Eos beatae eligendi, magni numquam nemo sed ut
+              corrupti, ipsam iure nisi unde et assumenda perspiciatis
+              voluptatibus nihil.
+            </p>
+          </div>
+        <div class="swiper-slide box">
+          <i class="fas fa-quote-right"></i>
+          <div class="user">
+            <img src="media/images/icons8-user-48.png" alt="" />
+            <div class="user-info">
+              <h3>lisa</h3>
+              <span>happy customer</span>
+            </div>
+          </div>
+          <div>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
+            dolor dicta cum. Eos beatae eligendi, magni numquam nemo sed ut
+            corrupti, ipsam iure nisi unde et assumenda perspiciatis
+            voluptatibus nihil.
+          </p>
+        </div>
+        </div>
+  
+        <div class="swiper-slide box">
+          <i class="fas fa-quote-right"></i>
+          <div class="user">
+            <img src="media/images/icons8-user-48.png" alt="" />
+            <div class="user-info">
+              <h3>mary</h3>
+              <span>happy customer</span>
+            </div>
+          </div>
+         <div>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
+            dolor dicta cum. Eos beatae eligendi, magni numquam nemo sed ut
+            corrupti, ipsam iure nisi unde et assumenda perspiciatis
+            voluptatibus nihil.
+          </p>
+        </div>
+      </div>
+    </section>
+
+  -->
+    
+  
+
+    <!-- contact section starts  -->
+    <section class="contact" id="contact">
+      <h1 class="heading"><span>contact</span> us</h1>
+
+      <form action="contact/" method="get">
+        <div class="inputBox">
+          <input type="text" placeholder="name" id="name" name="name" />
+          <input type="email" placeholder="email" id ="mail" name="mail" />
+        </div>
+        <div class="inputBox">
+          <input type="tel" placeholder="number" id="number" name="number" />
+          <input type="text" placeholder="subject" id="subject" name="subject"/>
+        </div>
+        <textarea
+          placeholder="message"
+          cols="30"
+          rows="10"
+          id="message"
+          name="message"
+        ></textarea>
+        <input type="submit" value="send message" class="btn" />
+      </form>
+    </section>
+
+
+    <!-- footer section starts  -->
+    <section class="footer" id="contact">
+      <div class="box-container">
+        <div class="box">
+          <h3>quick links</h3>
+          <a href="#home"> <i class="fas fa-arrow-right"></i> home </a>
+          <a href="#about"> <i class="fas fa-arrow-right"></i> about </a>
+          <a href="#contact"> <i class="fas fa-arrow-right"></i> contact </a>
+        </div>
+
+        <div class="box">
+          <h3>contact info</h3>
+          <a href="#"> <i class="fas fa-phone"></i>+91 9381935084</a>
+          <a href="#"> <i class="fas fa-phone"></i> +91 9600890179</a>
+            <a href="ganesh@swehg.com">
+            <i class="fas fa-envelope"></i> ganesh@swehg.com
+            </a>
+            <a href="mailto:sreeramthuraka29@gmail.com"> <i class="fas fa-envelope"></i> sreeramthuraka29@gmail.com</a>
+          <a href="#">
+            <i class="fas fa-map-marker-alt"></i>Coimbatore, India - 641105
+          </a>
+        </div>
+
+        <div class="box" id="con">
+          <h3>follow us</h3>
+          <a href="https://www.facebook.com/studyworldeng"> <i class="fab fa-facebook-f"></i> facebook </a>
+          <a href="https://x.com/i/flow/login?redirect_after_login=%2Fstudyworldgi"> <i class="fab fa-twitter"></i> twitter </a>
+          <a href="https://www.instagram.com/studyworldgi/"> <i class="fab fa-instagram"></i> instagram </a>
+          <a href="https://www.linkedin.com/school/study-world-college-of-engineering/"> <i class="fab fa-linkedin-in"></i> linkedin </a>
+        </div>
+      </div>
+
+      <div class="credit">
+        created by <span>BLUE BIRDS</span> | all rights reserved
+      </div>
+    </section>
+
+    <!-- theme toggler  -->
+    <div class="theme-toggler">
+      <div class="toggle-btn">
+        <i class="fas fa-cog"></i>
+      </div>
+
+      <h3>Color Mode</h3>
+
+      <button id="showIframeButton"><i class="fas fa-comments"></i></button>
+      <div class="buttons">
+        <div class="theme-btn" style="background: #ccff33"></div>
+        <div class="theme-btn" style="background: #d35400"></div>
+        <div class="theme-btn" style="background: #f39c12"></div>
+        <div class="theme-btn" style="background: #1abc9c"></div>
+        <div class="theme-btn" style="background: #3498db"></div>
+        <div class="theme-btn" style="background: #9b59b6"></div>
+      </div>
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+    <!--JS file-->
+    <script src={% static "app.js" %} defer></script>
+    {% if messages %}
+      {% for message in messages%}
+          <script>
+            alert("{{message}}");
+          </script>
+      {% endfor %}
+    {% endif%}
+    <script >
+      window.embeddedChatbotConfig = {
+      chatbotId: "ySVh76-qh4wTS0UfXLYoE",
+      domain: "www.chatbase.co"
+      }
+      </script>
+      <script
+      src="https://www.chatbase.co/embed.min.js"
+      chatbotId="ySVh76-qh4wTS0UfXLYoE"
+      domain="www.chatbase.co"
+      defer>
+      </script>
+  </body>
+</html>

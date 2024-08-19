@@ -1,0 +1,147 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Organisers | Krpton</title>
+
+    <!--swiper css-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"
+    />
+
+    <!--font awesome-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+
+    <!--css file-->
+    <link rel="stylesheet" href={% static "styles.css" %} />
+        <!--css file-->
+        <link rel="stylesheet" href={% static "admin.css" %} />
+  </head>
+  <body>
+    <!-- header section starts  -->
+    <header class="nav">
+      <i class="uil uil-bars navOpenBtn"></i>
+      <a href="#" class="logo"><span>k</span>rypton</a>
+
+      <nav class="nav-links">
+        <i class="uil uil-times navCloseBtn"></i>
+   
+      </nav>
+      <i class="uil uil-search search-icon" id="searchIcon"></i>
+      <div class="search-box">
+        <i class="uil uil-search search-icon"></i>
+        <input type="text" placeholder="Search here..." />
+      </div>
+     
+    </header>
+   
+
+      <!-- home section starts  -->
+      <section class="home" id="home">
+        <div class="content">
+          <h3>
+           
+            <span> Admin </span>
+            Dashboard
+          </h3>
+   
+        </div>
+   </section>
+
+
+
+
+    <table class="container">
+      <thead>
+        <tr>
+          <th><h1>Event Name</h1></th>
+          <th><h1>Organiser Name</h1></th>
+        
+          <th><h1>Description</h1></th>
+          <th><h1>Organizer contact</h1></th>
+          <th><h1>Descision</h1></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for event in events  %}
+        <tr>
+          <td>{{event.name}}</td>
+          <td>{{event.organizer.user.username}}</td>
+          <td>{{event.description}}</td>
+          <td>{{event.organizer.user.email}}</td>
+          <td>  <a href="{% url 'approve_event' event.id %}" class="btn-green">Approve</a>
+            <a href="{% url 'delete_event' event.id %}" class="btn-vol">Delete</a></td>
+        </tr>     
+        {% endfor %}   
+      </tbody>
+    </table>
+   
+    
+        
+<script src={% static "admin.js"%} defer ></script>
+
+    <!-- footer section starts  -->
+    <section class="footer">
+      <div class="box-container">
+       
+
+        <div class="box">
+          <h3>contact info</h3>
+          <a href="#"> <i class="fas fa-phone"></i>+91 9381935084</a>
+          <a href="#"> <i class="fas fa-phone"></i> +91 9600890179</a>
+            <a href="ganesh@swehg.com">
+            <i class="fas fa-envelope"></i> ganesh@swehg.com
+            </a>
+            <a href="mailto:sreeramthuraka29@gmail.com"> <i class="fas fa-envelope"></i> sreeramthuraka29@gmail.com</a>
+          <a href="#">
+            <i class="fas fa-map-marker-alt"></i>Coimbatore, India - 641105
+          </a>
+        </div>
+
+        <div class="box" id="con">
+          <h3>follow us</h3>
+          <a href="https://www.facebook.com/studyworldeng"> <i class="fab fa-facebook-f"></i> facebook </a>
+          <a href="https://x.com/i/flow/login?redirect_after_login=%2Fstudyworldgi"> <i class="fab fa-twitter"></i> twitter </a>
+          <a href="https://www.instagram.com/studyworldgi/"> <i class="fab fa-instagram"></i> instagram </a>
+          <a href="https://www.linkedin.com/school/study-world-college-of-engineering/"> <i class="fab fa-linkedin-in"></i> linkedin </a>
+        </div>
+      </div>
+
+      <div class="credit">
+        created by <span>BLUE BIRDS</span> | all rights reserved
+      </div>
+    </section>
+
+    <!-- theme toggler  -->
+    <div class="theme-toggler">
+      <div class="toggle-btn">
+        <i class="fas fa-cog"></i>
+      </div>
+
+      <h3>Color Mode</h3>
+
+      <div class="buttons">
+        <div class="theme-btn" style="background: #ccff33"></div>
+        <div class="theme-btn" style="background: #d35400"></div>
+        <div class="theme-btn" style="background: #f39c12"></div>
+        <div class="theme-btn" style="background: #1abc9c"></div>
+        <div class="theme-btn" style="background: #3498db"></div>
+        <div class="theme-btn" style="background: #9b59b6"></div>
+      </div>
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+    <!--JS file-->
+    <script src={% static "admin.js" %}></script>
+  </body>
+</html>

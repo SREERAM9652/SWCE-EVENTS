@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href={% static "styles.css" %} />
+    <link rel="stylesheet" href={% static "org.css" %} />
+</head>
+<body>
+
+
+    <header class="nav" id="top"><!-- Created By CodingLab - www.codinglabweb.com -->
+        <i class="uil uil-bars navOpenBtn"></i>
+        <a href="#" class="logo"> {% if user.get_username %}
+          {{ user.get_username }}
+          {% else %}
+          KRYPTON 
+          {% endif %}
+         </a>
+        <nav class="nav-links">
+          <i class="uil uil-times navCloseBtn"></i>
+          
+     
+        </nav>
+        <i class="uil uil-search search-icon" id="searchIcon"></i>
+        <div class="search-box">
+          <i class="uil uil-search search-icon"></i>
+          <input type="text" placeholder="Search here..." />
+        </div>
+       
+      </header>
+
+
+
+    <div class="content" >
+        <center>
+            <br><br><br><br><br>
+        <h2 class="event">Event Details</h2><br /><br>
+        
+        <div class="div_deg">
+            <form method="POST">
+                {% csrf_token %}
+                <div>
+                    <label class="label" for="event_name">Event name :</label>
+                    <input type="text" name="event_name" id="event_name" placeholder="Event Name" required>
+                </div>
+                <div>
+                    <label  class="label" for="venue">Venue :</label>
+                    <input type="text" name="venue" id="venue" placeholder="place held" required>
+                </div>
+                <div>
+                    <label class="label" for="start_date">Expected Start Date:</label>
+                    <input type="date" name="start_date" id="start_date" required>
+                </div>
+                <div>
+                  <label class="label" for="end_date">Expected End Date:</label>
+                  <input type="date" name="end_date" id="end_date" required>
+                </div>
+                <div>
+                    <label  class="label" for="description">Description :</label>
+                    <textarea id="description" id="description" name="description" rows="4" cols="50"></textarea> 
+                </div>
+                
+                <div>
+                    <input type="submit" class="btn-green" name="add_student" value="Save" required>
+                </div>
+                      
+            </form>
+        </div>
+        </center>
+       
+       </div>
+    <br><br><br>
+     
+        <!-- footer section starts  -->
+    <section class="footer">
+      <div class="box-container">
+
+
+        <div class="box">
+          <h3>contact info</h3>
+          <a href="#"> <i class="fas fa-phone"></i>+91 9381935084</a>
+          <a href="#"> <i class="fas fa-phone"></i> +91 9600890179</a>
+            <a href="ganesh@swehg.com">
+            <i class="fas fa-envelope"></i> ganesh@swehg.com
+            </a>
+            <a href="mailto:sreeramthuraka29@gmail.com"> <i class="fas fa-envelope"></i> sreeramthuraka29@gmail.com</a>
+          <a href="#">
+            <i class="fas fa-map-marker-alt"></i>Coimbatore, India - 641105
+          </a>
+        </div>
+
+        <div class="box" id="con">
+          <h3>follow us</h3>
+          <a href="https://www.facebook.com/studyworldeng"> <i class="fab fa-facebook-f"></i> facebook </a>
+          <a href="https://x.com/i/flow/login?redirect_after_login=%2Fstudyworldgi"> <i class="fab fa-twitter"></i> twitter </a>
+          <a href="https://www.instagram.com/studyworldgi/"> <i class="fab fa-instagram"></i> instagram </a>
+          <a href="https://www.linkedin.com/school/study-world-college-of-engineering/"> <i class="fab fa-linkedin-in"></i> linkedin </a>
+        </div>
+      </div>
+
+      <div class="credit">
+        created by <span>BLUE BIRDS</span> | all rights reserved
+      </div>
+    </section>
+
+
+
+</body>
+</html>

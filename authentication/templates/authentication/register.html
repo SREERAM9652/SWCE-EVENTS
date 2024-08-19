@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title> Responsive Registration Form | CodingLab </title>
+    <link rel="stylesheet" href="{% static "register.css" %}">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <div class="container">
+    <div class="title">Registration</div>
+    <div class="content">
+      <form method="POST">
+        {% csrf_token %}
+        <div class="user-details">
+          <input type="hidden" name="event_id" value={{event_id}}>
+          <div class="input-box">
+            <span class="details">Full Name</span>
+            <input type="text" value={{user.get_full_name}} required>
+          </div>
+          <div class="input-box">
+            <span class="details">Username</span>
+            <input type="text" value={{user.username}} required>
+          </div>
+          <div class="input-box">
+            <span class="details">Email</span>
+            <input type="text" value={{user.email}} required>
+          </div>
+          <div class="input-box">
+            <span class="details">Interested Task</span>
+            <input type="text" name="task" placeholder="Your Interested Task" required>
+          </div>
+          
+        </div>
+        
+        </div>
+        <div class="button">
+          <input type="submit" value="Register">
+        </div>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>

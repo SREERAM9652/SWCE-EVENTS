@@ -1,0 +1,46 @@
+.box{
+    display: flex;
+}
+.details{
+    color: white;
+    font-size:x-large;
+    margin-left: 10px;
+    text-align: left;
+}
+hr{
+    height: 2px;
+    background-color: rgb(199, 187, 187);
+    width: 80%;
+}
+.label {
+          
+     display: inline-block;
+     text-align:right;
+     color: #fff;
+     font-size: 2.5rem;
+      width:200px;
+   
+}
+  .div_deg
+  {
+   
+    background-color: #354058;
+      width:600px;
+      padding-top:65px;
+      padding-bottom:65px;
+      padding-left: 40px;
+      padding-right: 40px;
+  
+  }
+
+  .content h2 {
+    color: #fff;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+  }
+  
+   .content h2 span {
+    color: var(--theme-color);
+    text-transform: uppercase;
+  }
+  

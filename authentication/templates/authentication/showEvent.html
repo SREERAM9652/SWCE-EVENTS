@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Details</title>
+    <link rel="stylesheet" href={% static "styles.css" %} />
+   
+    <link rel="stylesheet" href={% static "showEvent.css" %} />
+</head>
+<body>
+    <header class="nav">
+        <i class="uil uil-bars navOpenBtn"></i>
+        <a href="#" class="logo"><span>BLUE</span>BIRDS</a>
+  
+        <nav class="nav-links">
+          <i class="uil uil-times navCloseBtn"></i>
+          
+     
+        </nav>
+        <i class="uil uil-search search-icon" id="searchIcon"></i>
+        <div class="search-box">
+          <i class="uil uil-search search-icon"></i>
+          <input type="text" placeholder="Search here..." />
+        </div>
+       
+    </header>
+
+     
+    <div class="content" >
+        <center>
+            <br><br><br><br><br>
+        <h2 class="event"><span>Event</span> Details</h2><br /><br>
+        <div class="div_deg">
+        
+                <div class="box">
+                    <label class="label" for="">Event name :</label>
+                    <div class="details">{{event.name}}</div>
+                </div>
+                <br>
+                <hr>
+                <br>
+                <div class="box">
+                    <label  class="label" for="">Venue :</label>
+                    <div class="details">{{event.venue}}</div>
+                </div>
+                <br>
+                <hr>
+                <br>
+                <div class="box">
+                    <label class="label" for="">Expected Date:</label>
+                    <div class="details">{{event.start_time}}</div>
+                </div>
+                <br>
+                <hr>
+                <br>
+                <div class="box">
+                    <div style="display: inline-flex;color: #fff; font-size: 2.5rem;"> Description:</div> 
+                    <div class="details">{{event.description}}</div>
+                </div>
+                <br>
+                <hr>
+                
+               
+                      
+        
+        </div>
+        </center>
+       
+       </div>
+
+       <br><br><br>
+
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Alert</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            color:red;
+            text-align: center;
+        }
+        
+        p {
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        .alert {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Login Alert</h1>
+        <p>Hello {{ user.username }},</p>
+        <div class="alert">
+            <p>Someone has logged into your account from a new device. If this was not you, please take immediate action to secure your account.</p>
+        </div>
+        <p>If you have any questions or need further assistance, please contact our support team.</p>
+        <p>Thank you,</p>
+        <p>The Team BLUE BIRDS</p>
+        <p><a href="#" class="btn">Visit Website</a></p>
+    </div>
+</body>
+</html>
