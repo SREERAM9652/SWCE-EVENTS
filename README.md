@@ -1,5 +1,5 @@
-# Event Management System for RGUKT RK Valley
-## TEAM KRYPTON
+# Event Management System for SWCE
+## TEAM BLUEBIRDS
 
 ![Django](https://img.shields.io/badge/Django-5.0.7-green) ![HTML](https://img.shields.io/badge/HTML-5-orange) ![CSS](https://img.shields.io/badge/CSS-3-blue) ![JavaScript](https://img.shields.io/badge/JavaScript-ES7-yellow)
 ### Index
@@ -14,7 +14,7 @@
 
 
 ## Overview:
-[**Krypton**](https://via.placeholder.com/10/00b48a?text=+) is a comprehensive web application  designed to streamline the planning, promotion, execution, and feedback process for campus events. This solution caters to students, faculty, and event organizers, providing a centralized platform for efficient event management in universitiy.
+[**BLUEBIRDS**](https://via.placeholder.com/10/00b48a?text=+) is a comprehensive web application  designed to streamline the planning, promotion, execution, and feedback process for campus events. This solution caters to students, faculty, and event organizers, providing a centralized platform for efficient event management in universitiy.
 <img align="left" width=100% height=600px src="https://github.com/user-attachments/assets/ee3ed622-6522-4f35-a787-97399165f1cd">
 ## Key Features
 
@@ -60,30 +60,10 @@ python manage.py runserver
 
 **Databases:** SQLITE
 
-## Demo
-view at [click](https://www.linkedin.com/posts/rajeswari-machina_hackathon-webdevelopment-eventmanagement-activity-7226303647234547713-mejN?utm_source=share&utm_medium=member_desktop)
-
-
-## Deployment
-
-We used [pythonanywhere](https://www.pythonanywhere.com/) to host our website .
-The website is live at [visit](https://teamkrypton.pythonanywhere.com/)
-## Collaborators
-
-| GitHub Profile                 |        Contribution    |
-|--------------------------------------------|-----------------|
-|[@Rajeswari Machina ](https://github.com/Rajeswari-Machina)           | Backend,Deployment,Documentation,email templates |
-|[@Nishka Prasan](https://github.com/NishkaPrasan)     | Front End     |
-| [@Vardhireddy Mani Kunar Reddy](https://github.com/Mani1655B)             | Backend ,Database |
-| [@Gangavarapu Rameswar](https://github.com/RamEswar78)     | AI chatbot integration,backend |
 
 
 Thank you to all the amazing contributors and collaborators who help make this project better! 🙌
-##  Thanks 
-[DEPT. OF CSE Student Recreation center Team](https://github.com/Student-Recreation-Center-CSE-RKV/SRC-s-Hackathon/tree/main?tab=readme-ov-file#problem-statement) for conducting Hackathon and providing us platform for developing solution to this problem.
-
-[Viewers]() for paying your time for our solution.
 
 ## Support
 
-For support, email rajeswarimachina02@gmail.com or contact our [Team](#Collaborators)
+For support, email sreeramthuraka29@gmail.com 
