@@ -15,7 +15,7 @@
 
 ## Overview:
 [**BLUEBIRDS**](https://via.placeholder.com/10/00b48a?text=+) is a comprehensive web application  designed to streamline the planning, promotion, execution, and feedback process for campus events. This solution caters to students, faculty, and event organizers, providing a centralized platform for efficient event management in universitiy.
-<img align="left" width=100% height=600px src="https://github.com/user-attachments/assets/ee3ed622-6522-4f35-a787-97399165f1cd">
+
 ## Key Features
 
 - **User Authentication**: Secure login with *role-based access*(students, faculty, organizers,admin).
