@@ -1,7 +1,7 @@
 # Event Management System for SWCE
 ## TEAM BLUEBIRDS
 
-![Django](https://img.shields.io/badge/Django-5.0.7-green) ![HTML](https://img.shields.io/badge/HTML-5-orange) ![CSS](https://img.shields.io/badge/CSS-3-blue) ![JavaScript](https://img.shields.io/badge/JavaScript-ES7-yellow)
+
 ### Index
 - [overview](#Overview)
 - [Features](#Key-Features)
@@ -34,8 +34,8 @@ Mail remainder system to the users about events,registrations,security alerts.(*
 ## Installation and Setup
  1. ### Clone the repository:
 ``` bash 
-git clone  https://github.com/Rajeswari-Machina/Krypton-Event-Management-System/
-cd event-management-system
+[git clone  https://github.com/Rajeswari-Machina/Krypton-Event-Management-System/
+cd event-management-syste](https://github.com/SREERAM9652/SWCE-EVENTS.git)
 ```
  2. ### Install dependencies:
 ```python
